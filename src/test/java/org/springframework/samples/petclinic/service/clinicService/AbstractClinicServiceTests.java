@@ -197,27 +197,27 @@ abstract class AbstractClinicServiceTests {
         assertThat(visitArr[0].getPet().getId()).isEqualTo(7);
     }
 
-    @Test
-    void shouldFindAllPets(){
-        Collection<Pet> pets = this.clinicService.findAllPets();
-        Pet pet1 = EntityUtils.getById(pets, Pet.class, 1);
-        assertThat(pet1.getName()).isEqualTo("Leo");
-        Pet pet3 = EntityUtils.getById(pets, Pet.class, 3);
-        assertThat(pet3.getName()).isEqualTo("Rosy");
-    }
+//    @Test
+//    void shouldFindAllPets(){
+//        Collection<Pet> pets = this.clinicService.findAllPets();
+//        Pet pet1 = EntityUtils.getById(pets, Pet.class, 1);
+//        assertThat(pet1.getName()).isEqualTo("Leo");
+//        Pet pet3 = EntityUtils.getById(pets, Pet.class, 3);
+//        assertThat(pet3.getName()).isEqualTo("Rosy");
+//    }
 
-    @Test
-    @Transactional
-    void shouldDeletePet(){
-        Pet pet = this.clinicService.findPetById(1);
-        this.clinicService.deletePet(pet);
-        try {
-            pet = this.clinicService.findPetById(1);
-		} catch (Exception e) {
-			pet = null;
-		}
-        assertThat(pet).isNull();
-    }
+//    @Test
+//    @Transactional
+//    void shouldDeletePet(){
+//        Pet pet = this.clinicService.findPetById(1);
+//        this.clinicService.deletePet(pet);
+//        try {
+//            pet = this.clinicService.findPetById(1);
+//		} catch (Exception e) {
+//			pet = null;
+//		}
+//        assertThat(pet).isNull();
+//    }
 
     @Test
     void shouldFindVisitDyId(){

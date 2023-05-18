@@ -124,32 +124,32 @@ class PetRestControllerTests {
             .andExpect(status().isNotFound());
     }
 
-    @Test
-    @WithMockUser(roles = "OWNER_ADMIN")
-    void testGetAllPetsSuccess() throws Exception {
-        final Collection<Pet> pets = petMapper.toPets(this.pets);
-        System.err.println(pets);
-        when(this.clinicService.findAllPets()).thenReturn(pets);
-        //given(this.clinicService.findAllPets()).willReturn(petMapper.toPets(pets));
-        this.mockMvc.perform(get("/api/pets/")
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType("application/json"))
-            .andExpect(jsonPath("$.[0].id").value(3))
-            .andExpect(jsonPath("$.[0].name").value("Rosy"))
-            .andExpect(jsonPath("$.[1].id").value(4))
-            .andExpect(jsonPath("$.[1].name").value("Jewel"));
-    }
+//    @Test
+//    @WithMockUser(roles = "OWNER_ADMIN")
+//    void testGetAllPetsSuccess() throws Exception {
+//        final Collection<Pet> pets = petMapper.toPets(this.pets);
+//        System.err.println(pets);
+////        when(this.clinicService.findAllPets()).thenReturn(pets);
+//        //given(this.clinicService.findAllPets()).willReturn(petMapper.toPets(pets));
+//        this.mockMvc.perform(get("/api/pets/")
+//            .accept(MediaType.APPLICATION_JSON))
+//            .andExpect(status().isOk())
+//            .andExpect(content().contentType("application/json"))
+//            .andExpect(jsonPath("$.[0].id").value(3))
+//            .andExpect(jsonPath("$.[0].name").value("Rosy"))
+//            .andExpect(jsonPath("$.[1].id").value(4))
+//            .andExpect(jsonPath("$.[1].name").value("Jewel"));
+//    }
 
-    @Test
-    @WithMockUser(roles = "OWNER_ADMIN")
-    void testGetAllPetsNotFound() throws Exception {
-        pets.clear();
-        given(this.clinicService.findAllPets()).willReturn(petMapper.toPets(pets));
-        this.mockMvc.perform(get("/api/pets/")
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isNotFound());
-    }
+//    @Test
+//    @WithMockUser(roles = "OWNER_ADMIN")
+//    void testGetAllPetsNotFound() throws Exception {
+//        pets.clear();
+//        given(this.clinicService.findAllPets()).willReturn(petMapper.toPets(pets));
+//        this.mockMvc.perform(get("/api/pets/")
+//            .accept(MediaType.APPLICATION_JSON))
+//            .andExpect(status().isNotFound());
+//    }
 
     @Test
     @WithMockUser(roles = "OWNER_ADMIN")
